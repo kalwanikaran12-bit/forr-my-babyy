@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Baby ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: black;
+  min-height:100vh;
+  text-align:center;
+  overflow-x:hidden;
+  color:white;
+}
+
+.card{
+  background: rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:30px;
+  max-width:700px;
+  margin:60px auto;
+  box-shadow:0 0 20px rgba(255,105,180,0.6);
+  display:none;
+}
+
+button{
+  background: linear-gradient(to right,#ff4b8b,#ff75b5);
+  border:none;
+  color:white;
+  font-size:18px;
+  padding:12px 30px;
+  border-radius:30px;
+  cursor:pointer;
+  margin:15px;
+}
+
+.progress-box{
+  width:100%;
+  background:#222;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:20px;
+}
+
+.progress-bar{
+  height:20px;
+  width:0%;
+  background:linear-gradient(to right,#ff4b8b,#ff75b5);
+}
+
+.kiss{
+  position:fixed;
+  bottom:-50px;
+  font-size:26px;
+  animation:float 6s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-110vh);}
+}
+
+/* Balloons */
+.balloon{
+  display:inline-block;
+  width:140px;
+  height:180px;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%,#ff9ad5,#ff2f92);
+  color:white;
+  font-size:30px;
+  line-height:180px;
+  margin:20px;
+  animation:fly 6s linear infinite;
+}
+
+@keyframes fly{
+  0%{transform:translateY(200px);}
+  100%{transform:translateY(-800px);}
+}
+
+/* Letter */
+.letter{
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:10px;
+  display:none;
+  animation:open 1s;
+}
+
+@keyframes open{
+  from{transform:scaleY(0);}
+  to{transform:scaleY(1);}
+}
+
+.petal{
+  position:fixed;
+  top:-50px;
+  font-size:24px;
+  animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="card" id="page1" style="display:block;">
+  <h1>Hii meri babyyyy 😘</h1>
+  <button onclick="nextPage('page1','page2')">Next</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card" id="page2">
+  <h2>Do you love me? ❤️</h2>
+  <button onclick="startCuteness()">Yes</button>
+  <button onclick="alert('Please select yes because I love you so much 😘')">No</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card" id="page3">
+  <h2>Checking your cuteness 😘</h2>
+  <div class="progress-box">
+    <div class="progress-bar" id="bar"></div>
+  </div>
+  <p id="percent">0%</p>
+</div>
+
+<!-- PAGE 4 -->
+<div class="card" id="page4">
+  <h2>Your cuteness is 150%+ 😍</h2>
+  <p>Because you are sooo beautiful ❤️</p>
+  <button onclick="nextPage('page4','page5')">Next</button>
+</div>
+
+<!-- PAGE 5 BALLOONS -->
+<div class="card" id="page5">
+  <h2>I LOVE YOU 😘</h2>
+  <div class="balloon">I</div>
+  <div class="balloon">LOVE</div>
+  <div class="balloon">YOU</div>
+  <button onclick="nextPage('page5','page6')">Next</button>
+</div>
+
+<!-- PAGE 6 LETTER -->
+<div class="card" id="page6">
+  <h2>Tap to open letter 💌</h2>
+  <button onclick="openLetter()">Open Letter</button>
+
+  <div class="letter" id="letterBox">
+    <p>
+      My love ❤️  
+      You are my happiness, my peace and my everything.  
+      I promise to always love you forever 😘  
+    </p>
+    <button onclick="nextPage('page6','page7')">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="card" id="page7">
+  <h1>Byeee Babyyyy 😘</h1>
+  <p>I love you forever ❤️</p>
+</div>
+
+<script>
+function nextPage(cur,next){
+  document.getElementById(cur).style.display="none";
+  document.getElementById(next).style.display="block";
+}
+
+function startCuteness(){
+  let music=document.getElementById("bgMusic");
+  music.play();
+
+  nextPage('page2','page3');
+
+  let progress=0;
+  let bar=document.getElementById("bar");
+  let percent=document.getElementById("percent");
+
+  let interval=setInterval(()=>{
+    progress+=5;
+    bar.style.width=progress+"%";
+    percent.innerText=progress+"%";
+
+    if(progress>=100){
+      clearInterval(interval);
+      nextPage('page3','page4');
+    }
+  },150);
+}
+
+function openLetter(){
+  document.getElementById("letterBox").style.display="block";
+
+  // rose petals
+  setInterval(()=>{
+    const petal=document.createElement("div");
+    petal.className="petal";
+    petal.innerHTML="🌹";
+    petal.style.left=Math.random()*100+"vw";
+    document.body.appendChild(petal);
+    setTimeout(()=>petal.remove(),6000);
+  },400);
+}
+
+/* flying kisses */
+setInterval(()=>{
+  const kiss=document.createElement("div");
+  kiss.className="kiss";
+  kiss.innerHTML="😘";
+  kiss.style.left=Math.random()*100+"vw";
+  document.body.appendChild(kiss);
+  setTimeout(()=>kiss.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>

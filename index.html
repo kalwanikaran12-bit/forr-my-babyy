@@ -8,7 +8,7 @@
 body{
   margin:0;
   font-family: Arial;
-  background: black;
+  background:black;
   min-height:100vh;
   text-align:center;
   overflow-x:hidden;
@@ -19,9 +19,9 @@ body{
   background: rgba(255,255,255,0.08);
   border-radius:20px;
   padding:30px;
-  max-width:700px;
+  max-width:800px;
   margin:60px auto;
-  box-shadow:0 0 20px rgba(255,105,180,0.6);
+  box-shadow:0 0 25px rgba(255,105,180,0.6);
   display:none;
 }
 
@@ -34,6 +34,13 @@ button{
   border-radius:30px;
   cursor:pointer;
   margin:15px;
+}
+
+img{
+  width:45%;
+  margin:10px;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(255,105,180,0.7);
 }
 
 .progress-box{
@@ -50,20 +57,6 @@ button{
   background:linear-gradient(to right,#ff4b8b,#ff75b5);
 }
 
-.kiss{
-  position:fixed;
-  bottom:-50px;
-  font-size:26px;
-  animation:float 6s linear infinite;
-  opacity:0.8;
-}
-
-@keyframes float{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-110vh);}
-}
-
-/* Balloons */
 .balloon{
   display:inline-block;
   width:140px;
@@ -82,7 +75,6 @@ button{
   100%{transform:translateY(-800px);}
 }
 
-/* Letter */
 .letter{
   background:white;
   color:black;
@@ -97,15 +89,17 @@ button{
   to{transform:scaleY(1);}
 }
 
-.petal{
+.kiss{
   position:fixed;
-  top:-50px;
-  font-size:24px;
-  animation:fall 6s linear infinite;
+  bottom:-50px;
+  font-size:26px;
+  animation:float 6s linear infinite;
+  opacity:0.8;
 }
 
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-110vh);}
 }
 </style>
 </head>
@@ -129,7 +123,7 @@ button{
   <button onclick="alert('Please select yes because I love you so much 😘')">No</button>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 CUTENESS -->
 <div class="card" id="page3">
   <h2>Checking your cuteness 😘</h2>
   <div class="progress-box">
@@ -138,39 +132,85 @@ button{
   <p id="percent">0%</p>
 </div>
 
-<!-- PAGE 4 -->
+<!-- PAGE 4 RESULT -->
 <div class="card" id="page4">
   <h2>Your cuteness is 150%+ 😍</h2>
   <p>Because you are sooo beautiful ❤️</p>
   <button onclick="nextPage('page4','page5')">Next</button>
 </div>
 
-<!-- PAGE 5 BALLOONS -->
+<!-- PAGE 5 STORY SCREENSHOTS -->
 <div class="card" id="page5">
+  <h2>I took screenshots of your stories ❤️</h2>
+  <img src="story1.jpeg">
+  <img src="story2.jpeg">
+  <button onclick="nextPage('page5','page6')">Next</button>
+</div>
+
+<!-- PAGE 6 FIRST PICS -->
+<div class="card" id="page6">
+  <h2>You sent me your first pictures on 01/04/2025 😘</h2>
+  <img src="pic1.jpeg">
+  <img src="pic2.jpeg">
+  <img src="pic3.jpeg">
+  <img src="pic4.jpeg">
+  <button onclick="nextPage('page6','page7')">Next</button>
+</div>
+
+<!-- PAGE 7 FIRST SNAP -->
+<div class="card" id="page7">
+  <h2>You sent me your first snap on 02/04/2025 ❤️</h2>
+  <img src="snap1.jpeg">
+  <img src="snap2.jpeg">
+  <button onclick="nextPage('page7','page8')">Next</button>
+</div>
+
+<!-- PAGE 8 RELATIONSHIP -->
+<div class="card" id="page8">
+  <h2>We came into a relationship on 25/05/2025 💍</h2>
+  <p>That was the best decision of my life ❤️</p>
+  <button onclick="nextPage('page8','page9')">Next</button>
+</div>
+
+<!-- PAGE 9 BALLOONS -->
+<div class="card" id="page9">
   <h2>I LOVE YOU 😘</h2>
   <div class="balloon">I</div>
   <div class="balloon">LOVE</div>
   <div class="balloon">YOU</div>
-  <button onclick="nextPage('page5','page6')">Next</button>
+  <button onclick="nextPage('page9','page10')">Next</button>
 </div>
 
-<!-- PAGE 6 LETTER -->
-<div class="card" id="page6">
-  <h2>Tap to open letter 💌</h2>
+<!-- PAGE 10 FAV PICS -->
+<div class="card" id="page10">
+  <h2>My Favourite Pictures of You ❤️</h2>
+  <img src="fav1.jpeg">
+  <img src="fav2.jpeg">
+  <img src="fav3.jpeg">
+  <img src="fav4.jpeg">
+  <img src="fav5.jpeg">
+  <img src="fav6.jpeg">
+  <img src="fav7.jpeg">
+  <button onclick="nextPage('page10','page11')">Next</button>
+</div>
+
+<!-- PAGE 11 LETTER -->
+<div class="card" id="page11">
+  <h2>Tap to open my letter 💌</h2>
   <button onclick="openLetter()">Open Letter</button>
 
   <div class="letter" id="letterBox">
     <p>
-      My love ❤️  
-      You are my happiness, my peace and my everything.  
-      I promise to always love you forever 😘  
+      My love ❤️<br><br>
+      You are my happiness, my peace and my everything.<br>
+      I promise to always love you forever 😘
     </p>
-    <button onclick="nextPage('page6','page7')">Next</button>
+    <button onclick="nextPage('page11','page12')">Next</button>
   </div>
 </div>
 
-<!-- PAGE 7 -->
-<div class="card" id="page7">
+<!-- PAGE 12 -->
+<div class="card" id="page12">
   <h1>Byeee Babyyyy 😘</h1>
   <p>I love you forever ❤️</p>
 </div>
@@ -182,9 +222,7 @@ function nextPage(cur,next){
 }
 
 function startCuteness(){
-  let music=document.getElementById("bgMusic");
-  music.play();
-
+  document.getElementById("bgMusic").play();
   nextPage('page2','page3');
 
   let progress=0;
@@ -205,19 +243,8 @@ function startCuteness(){
 
 function openLetter(){
   document.getElementById("letterBox").style.display="block";
-
-  // rose petals
-  setInterval(()=>{
-    const petal=document.createElement("div");
-    petal.className="petal";
-    petal.innerHTML="🌹";
-    petal.style.left=Math.random()*100+"vw";
-    document.body.appendChild(petal);
-    setTimeout(()=>petal.remove(),6000);
-  },400);
 }
 
-/* flying kisses */
 setInterval(()=>{
   const kiss=document.createElement("div");
   kiss.className="kiss";
@@ -225,7 +252,7 @@ setInterval(()=>{
   kiss.style.left=Math.random()*100+"vw";
   document.body.appendChild(kiss);
   setTimeout(()=>kiss.remove(),6000);
-},500);
+},600);
 </script>
 
 </body>
